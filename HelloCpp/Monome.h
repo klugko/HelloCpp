@@ -1,18 +1,23 @@
 #pragma once
+#pragma once
 #include <iostream>
+#include <vector>
 
 using namespace std;
+
 
 class Monome {
 private:
     double coefficient;
     int degre;
 
-    Monome(double coef = 0, int def = 0) : coefficient(coef), degre(def) {}
+public:
+    Monome(double coef = 0, int deg = 0) : coefficient(coef), degre(deg) {}
 
     double getCoefficient() const {
         return coefficient;
     }
+
     int getDegre() const {
         return degre;
     }
@@ -24,17 +29,18 @@ private:
         return Monome(coefficient * degre, degre - 1);
     }
 
-    void printMonome() {
-        cout << coefficient << "X^" << degre;
+    void printMonome() const {
+        if (coefficient != 0) {
+            cout << coefficient << "X^" << degre;
+        }
     }
 
-    //override operator
     Monome operator+(const Monome& m) const {
         if (degre == m.degre) {
             return Monome(coefficient + m.coefficient, degre);
         }
         else {
-            cerr << "Impossible d'additionner car les degrés sont  différents \n";
+            cerr << "Erreur: Les degrés sont différents" << endl;
             return *this;
         }
     }
@@ -42,12 +48,10 @@ private:
     Monome operator-(const Monome& m) const {
         if (degre == m.degre) {
             return Monome(coefficient - m.coefficient, degre);
-
         }
         else {
-            cerr << "Impossible de soustraire car les degrés sont différents \n";
+            cerr << "Erreur: Les degrés sont différents" << endl;
             return *this;
         }
     }
 };
-
