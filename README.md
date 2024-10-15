@@ -74,3 +74,6 @@ p.printPolynome();  // Outputs: 3X^2 + 5X^1 + 2X^0
 Polynome derived = p.derive();
 derived.printPolynome();  // Outputs: 6X^1 + 5X^0
 ```
+
+### 1. **DateHeure**
+- to manipulate Date 
